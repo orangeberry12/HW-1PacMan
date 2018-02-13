@@ -71,7 +71,7 @@ exercise.checkWallCollision = function() {
     // you need to take into account image width
     var currentPosition = parseInt(exercise.img1.style.left);
     //collision on the left
-    if (currentPosition === 400){
+    if (currentPosition === 600){
         return 'L';
     }
     //collision on the right
