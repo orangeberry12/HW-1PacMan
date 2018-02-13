@@ -20,9 +20,9 @@ exercise.updatePosition = function() {
     // increment exercise.pos.x by increment 
     // now set image position using img1.style.left 
     // remember images positions are "xxx.px"
+    console.log('updating position');
 
     //Collision on the left, move right
-    console.log(exercise.pos.x);
     if (exercise.checkWallCollision() === 'R'){
         exercise.increment = 20;
     }
@@ -30,7 +30,9 @@ exercise.updatePosition = function() {
     else if (exercise.checkWallCollision() === 'L'){
         exercise.increment = -20;
     }
-
+    //toggle flag between 0 and 1
+    exercise.flag ^= 1;
+    
     var currentPosition = parseInt(exercise.pos.x);
     //increment position
     exercise.pos.x = currentPosition + exercise.increment + "px";
@@ -45,22 +47,18 @@ exercise.chooseImage = function() {
     if (exercise.increment > 0) {
     	//going to the right
         if (exercise.flag === 1) {
-        	//PacMan2
             exercise.img1.src = './PacMan2.png';
 
         } else {
-        	//PacMan1
             exercise.img1.src = './PacMan1.png';
 
         }
     } else if (exercise.increment < 0) {
     	//going to the left
         if (exercise.flag === 1) {
-        	//PacMan4
             exercise.img1.src = './PacMan4.png';
 
         } else {
-        	//Pacman3
             exercise.img1.src = './PacMan3.png';
 
         }
@@ -71,7 +69,6 @@ exercise.chooseImage = function() {
 exercise.checkWallCollision = function() {
     // reset the direction of motion if wall is hit
     // you need to take into account image width
-
     var currentPosition = parseInt(exercise.img1.style.left);
     //collision on the left
     if (currentPosition === 400){
@@ -81,5 +78,4 @@ exercise.checkWallCollision = function() {
     else if (currentPosition === 0){
         return 'R';
     }
-
 };
