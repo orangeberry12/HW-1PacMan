@@ -20,16 +20,6 @@ exercise.updatePosition = function() {
     // increment exercise.pos.x by increment 
     // now set image position using img1.style.left 
     // remember images positions are "xxx.px"
-    console.log('updating position');
-
-    //Collision on the left, move right
-    if (exercise.checkWallCollision() === 'R'){
-        exercise.increment = 20;
-    }
-    //Collision on the right, move left
-    else if (exercise.checkWallCollision() === 'L'){
-        exercise.increment = -20;
-    }
     //toggle flag between 0 and 1
     exercise.flag ^= 1;
     //increment position
@@ -70,10 +60,10 @@ exercise.checkWallCollision = function() {
     var currentPosition = exercise.pos.x;
     //collision on the left
     if (currentPosition === 600){
-        return 'L';
+        exercise.increment = -20;
     }
     //collision on the right
     else if (currentPosition === 0){
-        return 'R';
+        exercise.increment = 20;
     }
 };
