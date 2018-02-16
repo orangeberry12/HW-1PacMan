@@ -32,12 +32,10 @@ exercise.updatePosition = function() {
     }
     //toggle flag between 0 and 1
     exercise.flag ^= 1;
-    
-    var currentPosition = parseInt(exercise.pos.x);
     //increment position
-    exercise.pos.x = currentPosition + exercise.increment + "px";
+    exercise.pos.x += exercise.increment;
     //update position
-    exercise.img1.style.left = exercise.pos.x;
+    exercise.img1.style.left = exercise.pos.x+"px";
 
 };
 
@@ -69,7 +67,7 @@ exercise.chooseImage = function() {
 exercise.checkWallCollision = function() {
     // reset the direction of motion if wall is hit
     // you need to take into account image width
-    var currentPosition = parseInt(exercise.img1.style.left);
+    var currentPosition = exercise.pos.x;
     //collision on the left
     if (currentPosition === 600){
         return 'L';
